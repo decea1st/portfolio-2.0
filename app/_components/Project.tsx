@@ -1,4 +1,5 @@
 import TransitionLink from '@/components/TransitionLink';
+import { cn } from '@/lib/utils';
 import { IProject } from '@/types';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
@@ -6,9 +7,10 @@ import Image from 'next/image';
 interface Props {
     index: number;
     project: IProject;
+    isActive?: boolean;
 }
 
-const Project = ({ index, project }: Props) => {
+const Project = ({ index, project, isActive = false }: Props) => {
     return (
         <TransitionLink
             href={`/projects/${project.slug}`}
@@ -20,9 +22,41 @@ const Project = ({ index, project }: Props) => {
                     alt={`${project.title} preview`}
                     width="720"
                     height="450"
-                    className="h-full w-full object-cover object-top opacity-70 saturate-[0.75] transition duration-700 group-hover:scale-105 group-hover:opacity-100 group-hover:saturate-100"
+                    className={cn(
+                        'h-full w-full object-cover object-top saturate-[0.75] transition duration-700 group-hover:scale-105 group-hover:saturate-100',
+                        isActive
+                            ? 'opacity-60'
+                            : 'opacity-70 group-hover:opacity-100',
+                    )}
                     loading="lazy"
                 />
+
+                {isActive && (
+                    <>
+                        <div
+                            className="pointer-events-none absolute inset-0 mix-blend-screen"
+                            style={{
+                                background:
+                                    'linear-gradient(180deg, rgba(34,211,238,0.18) 0%, rgba(20,184,166,0.22) 100%)',
+                            }}
+                        />
+                        <div
+                            className="pointer-events-none absolute inset-0 opacity-70"
+                            style={{
+                                background:
+                                    'repeating-linear-gradient(0deg, rgba(34,211,238,0.22) 0px, rgba(34,211,238,0.22) 1px, transparent 1px, transparent 4px)',
+                            }}
+                        />
+                        <div
+                            className="pointer-events-none absolute inset-0 opacity-40"
+                            style={{
+                                background:
+                                    'repeating-linear-gradient(90deg, rgba(34,211,238,0.10) 0px, rgba(34,211,238,0.10) 1px, transparent 1px, transparent 6px)',
+                            }}
+                        />
+                    </>
+                )}
+
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(2,8,13,0.8))]" />
                 <div className="absolute left-4 top-4 hud-readout text-primary">
                     SYS-{(index + 1).toString().padStart(2, '0')}
