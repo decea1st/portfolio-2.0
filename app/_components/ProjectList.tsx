@@ -147,7 +147,7 @@ const ProjectList = () => {
                         className="relative mx-auto h-[500px] w-full overflow-hidden"
                         style={{
                             perspective: `${PERSPECTIVE}px`,
-                            perspectiveOrigin: '50% 50%',
+                            perspectiveOrigin: '50% 30%',
                         }}
                     >
                         <div
