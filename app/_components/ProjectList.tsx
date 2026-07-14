@@ -24,7 +24,19 @@ const ProjectList = () => {
     const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
     const rotationRef = useRef(0);
     const isAnimatingRef = useRef(false);
+    const isInViewRef = useRef(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            isInViewRef.current = entry.isIntersecting;
+        });
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     useGSAP(
         () => {
@@ -118,6 +130,7 @@ const ProjectList = () => {
 
     useEffect(() => {
         const handleKey = (e: KeyboardEvent) => {
+            if (!isInViewRef.current) return;
             if (e.key === 'ArrowLeft') {
                 prev();
             } else if (e.key === 'ArrowRight') {
@@ -144,7 +157,7 @@ const ProjectList = () => {
 
                 <div ref={carouselRef} className="relative">
                     <div
-                        className="relative mx-auto h-[500px] w-full overflow-hidden"
+                        className="relative mx-auto h-[580px] w-full overflow-hidden"
                         style={{
                             perspective: `${PERSPECTIVE}px`,
                             perspectiveOrigin: '50% 30%',
@@ -180,41 +193,47 @@ const ProjectList = () => {
                         </div>
                     </div>
 
-                    <button
-                        type="button"
-                        onClick={prev}
-                        aria-label="Previous project"
-                        className="absolute left-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-black/50 text-primary backdrop-blur-md transition hover:bg-primary hover:text-primary-foreground md:left-4"
-                    >
-                        <ChevronLeft size={22} />
-                    </button>
-                    <button
-                        type="button"
-                        onClick={next}
-                        aria-label="Next project"
-                        className="absolute right-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-black/50 text-primary backdrop-blur-md transition hover:bg-primary hover:text-primary-foreground md:right-4"
-                    >
-                        <ChevronRight size={22} />
-                    </button>
-
-                    <div className="mt-6 flex items-center justify-center gap-2.5">
-                        {PROJECTS.map((project, i) => (
+                    {PROJECTS.length > 1 && (
+                        <>
                             <button
                                 type="button"
-                                key={project.slug}
-                                onClick={() => goTo(i)}
-                                aria-label={`Show ${project.title}`}
-                                aria-current={
-                                    i === currentIndex ? 'true' : undefined
-                                }
-                                className={`h-2 border border-primary/30 transition-all ${
-                                    i === currentIndex
-                                        ? 'w-8 bg-primary'
-                                        : 'w-2 bg-primary/20 hover:bg-primary/50'
-                                }`}
-                            />
-                        ))}
-                    </div>
+                                onClick={prev}
+                                aria-label="Previous project"
+                                className="absolute left-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-black/70 text-primary transition hover:bg-primary hover:text-primary-foreground md:left-4"
+                            >
+                                <ChevronLeft size={22} />
+                            </button>
+                            <button
+                                type="button"
+                                onClick={next}
+                                aria-label="Next project"
+                                className="absolute right-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-black/70 text-primary transition hover:bg-primary hover:text-primary-foreground md:right-4"
+                            >
+                                <ChevronRight size={22} />
+                            </button>
+
+                            <div className="mt-6 flex items-center justify-center gap-2.5">
+                                {PROJECTS.map((project, i) => (
+                                    <button
+                                        type="button"
+                                        key={project.slug}
+                                        onClick={() => goTo(i)}
+                                        aria-label={`Show ${project.title}`}
+                                        aria-current={
+                                            i === currentIndex
+                                                ? 'true'
+                                                : undefined
+                                        }
+                                        className={`h-2 border border-primary/30 transition-all ${
+                                            i === currentIndex
+                                                ? 'w-8 bg-primary'
+                                                : 'w-2 bg-primary/20 hover:bg-primary/50'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </section>

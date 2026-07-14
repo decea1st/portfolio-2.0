@@ -33,13 +33,13 @@ const ParticleBackground = () => {
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
             <div className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10" />
             <div className="absolute left-1/2 top-1/2 h-[54vmin] w-[54vmin] -translate-x-1/2 -translate-y-1/2 rounded-full border border-secondary/10" />
-            {[...Array(42)].map((_, i) => (
+            {[...Array(24)].map((_, i) => (
                 <span
                     key={i}
                     ref={(el) => {
                         if (el) nodesRef.current[i] = el;
                     }}
-                    className="absolute size-1 bg-primary shadow-[0_0_18px_hsl(var(--primary))]"
+                    className="absolute size-1 bg-primary shadow-[0_0_10px_hsl(var(--primary))] will-change-transform"
                 />
             ))}
         </div>

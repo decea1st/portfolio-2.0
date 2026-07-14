@@ -15,6 +15,9 @@ interface Props {
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+const displayUrl = (url: string) =>
+    url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+
 const ProjectDetails = ({ project }: Props) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -68,29 +71,46 @@ const ProjectDetails = ({ project }: Props) => {
                             ))}
                         </div>
 
-                        <div className="mt-8 flex gap-3">
-                            {project.sourceCode && (
-                                <a
-                                    href={project.sourceCode}
-                                    target="_blank"
-                                    rel="noreferrer noopener"
-                                    className="flex size-11 items-center justify-center border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
-                                    aria-label="Source code"
-                                >
-                                    <Github size={20} />
-                                </a>
-                            )}
+                        <div className="mt-8 grid gap-3">
                             {project.liveUrl && (
                                 <a
                                     href={project.liveUrl}
                                     target="_blank"
                                     rel="noreferrer noopener"
-                                    className="flex size-11 items-center justify-center border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
-                                    aria-label="Live site"
+                                    className="flex h-11 items-center gap-3 border border-primary/30 px-4 text-sm text-primary transition hover:bg-primary hover:text-primary-foreground"
                                 >
-                                    <ExternalLink size={20} />
+                                    <ExternalLink
+                                        size={18}
+                                        className="shrink-0"
+                                    />
+                                    <span className="truncate tracking-[0.08em]">
+                                        {displayUrl(project.liveUrl)}
+                                    </span>
                                 </a>
                             )}
+                            {project.sourceCode && (
+                                <a
+                                    href={project.sourceCode}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                    className="flex h-11 items-center gap-3 border border-primary/30 px-4 text-sm text-primary transition hover:bg-primary hover:text-primary-foreground"
+                                >
+                                    <Github size={18} className="shrink-0" />
+                                    <span className="truncate tracking-[0.08em]">
+                                        {displayUrl(project.sourceCode)}
+                                    </span>
+                                </a>
+                            )}
+                        </div>
+
+                        <div className="mt-8 overflow-hidden border border-primary/20 bg-black/30">
+                            <Image
+                                src={project.thumbnail}
+                                alt={`${project.title} landing page`}
+                                width="720"
+                                height="405"
+                                className="h-auto w-full object-cover object-top"
+                            />
                         </div>
                     </div>
 

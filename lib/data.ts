@@ -5,16 +5,11 @@ export const GENERAL_INFO = {
 
     emailSubject: "Let's collaborate on a project",
     emailBody: 'Hi Fardin, I am reaching out to you because...',
-
-    oldPortfolio: 'https://www.legacy.me.toinfinite.dev',
-    upworkProfile: 'https://www.upwork.com/freelancers/tajmirul',
 };
 
 export const SOCIAL_LINKS = [
-    { name: 'github', url: 'https://github.com/Tajmirul' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/tajmirul' },
-    { name: 'facebook', url: 'https://www.facebook.com/tajmirul.2000' },
-    { name: 'Old Version', url: GENERAL_INFO.oldPortfolio },
+    { name: 'github', url: 'https://github.com/Dece1st' },
+    { name: 'linkedin', url: 'https://www.linkedin.com/in/fardin-saraf/' },
 ];
 
 export const MY_STACK = {
@@ -106,12 +101,15 @@ export const MY_STACK = {
         },
         {
             name: 'Claude',
+            icon: '/logo/claude.svg',
         },
         {
             name: 'Cursor',
+            icon: '/logo/cursor.svg',
         },
         {
             name: 'Codex',
+            icon: '/logo/codex.svg',
         },
     ],
 };
@@ -143,124 +141,74 @@ export const PROJECTS: IProject[] = [
         images: ['/projects/images/clustr-1.png'],
     },
     {
-        title: 'Epikcart',
-        slug: 'epikcart',
+        title: 'Outbreak.io',
+        slug: 'outbreak-io',
+        liveUrl: 'https://outbreakio.dev',
+        sourceCode: 'https://github.com/decea1st/Outbreak.io',
+        year: 2026,
+        description: `
+      Outbreak.io is a live public health surveillance dashboard for New York City. Users can track reported symptoms on an interactive map, explore COVID-19, influenza, and RSV trends from official NYC health data, and submit their own anonymous reports. <br/><br/>
+
+      Key Features:
+      <ul>
+        <li>Interactive map of user-reported symptoms across NYC with filtering</li>
+        <li>Public analytics dashboard with report volume, condition breakdowns, and surveillance trends</li>
+        <li>Anonymous symptom reporting with automatic expiration and ML-based condition classification</li>
+        <li>Optional accounts with JWT authentication and admin moderation tools</li>
+        <li>Automated weekly ingestion of NYC Department of Health data via GitHub Actions</li>
+      </ul>
+      `,
+        role: `
+      Full-Stack Developer <br/>
+      Started as a five-person senior design project at CCNY; I extended it into a public-facing surveillance tool, building the respiratory illness data pipeline, anonymous reporting flow, and public map and dashboard experience across the Expo frontend and Express API.
+      `,
+        techStack: [
+            'React Native',
+            'Expo',
+            'TypeScript',
+            'Node.js',
+            'Express',
+            'MongoDB',
+            'scikit-learn',
+        ],
+        thumbnail: '/projects/thumbnail/outbreak-io.png',
+        longThumbnail: '/projects/long/outbreak-io.png',
+        images: [
+            '/projects/images/outbreak-io-1.png',
+            '/projects/images/outbreak-io-2.png',
+            '/projects/images/outbreak-io-3.png',
+        ],
+    },
+    {
+        title: 'CampusVoice',
+        slug: 'campusvoice',
+        sourceCode: 'https://github.com/HashirAligb/campusvoice',
+        year: 2025,
+        description: `
+      CampusVoice is a community-driven platform where students can raise issues, share feedback, and work together to improve campus life. Students submit and browse campus issues, discuss them, and track their status as they move toward resolution. <br/><br/>
+
+      Key Features:
+      <ul>
+        <li>Issue reporting and browsing with community discussion around each report</li>
+        <li>Student accounts with profiles for submitting and following issues</li>
+        <li>Supabase backend with a PostgreSQL schema and file storage for attachments</li>
+        <li>Fast Vite-powered React frontend written in TypeScript</li>
+      </ul>
+      `,
+        role: `
+      Full-Stack Developer <br/>
+      I worked on CampusVoice as part of a small team, contributing across the React + TypeScript frontend and the Supabase backend, including the issue reporting flow and database schema.
+      `,
         techStack: [
             'React',
-            'Redux',
-            'React i18n',
-            'Tailwind CSS',
-            'Framer Motion',
-            'debouncing',
-            'Api Integration',
+            'TypeScript',
+            'Vite',
+            'Supabase',
+            'PostgreSQL',
         ],
-        thumbnail: '/projects/thumbnail/epikcart.jpg',
-        longThumbnail: '/projects/long/epikcart.jpg',
-        images: [
-            '/projects/images/epikcart-1.png',
-            '/projects/images/epikcart-2.png',
-            '/projects/images/epikcart-3.png',
-            '/projects/images/epikcart-4.png',
-            '/projects/images/epikcart-5.png',
-        ],
-        liveUrl: 'https://demo.epikcart.siphertech.com/',
-        year: 2023,
-        description: `Epikcart is a feature-rich, scalable e-commerce platform tailored for large businesses. It features dynamic product filtering, multi-language support with RTL, advanced inventory management, order tracking, and refund systems, offering a comprehensive solution for multi-vendor operations.`,
-        role: `As a full-stack developer in a team of five, I: <br/>
-        - Built the frontend from scratch using React, Redux, RTK Query, and Tailwind CSS.<br/>
-        - Developed dynamic filtering logic for the product search page with admin-configurable parameters.<br/>
-        - Integrated multi-language support with React i18n, including RTL handling.<br/>
-        - Delivered a responsive, user-friendly interface in collaboration with the UI/UX designer.`,
-    },
-    {
-        title: 'Resume Roaster',
-        slug: 'resume-roaster',
-        techStack: [
-            'GPT-4',
-            'Next.js',
-            'Postgressql',
-            'Prisma',
-            'Tailwind CSS',
-        ],
-        thumbnail: '/projects/thumbnail/resume-roaster.jpg',
-        longThumbnail: '/projects/long/resume-roaster.jpg',
-        images: [
-            '/projects/images/resume-roaster-1.png',
-            '/projects/images/resume-roaster-2.png',
-            '/projects/images/resume-roaster-3.png',
-        ],
-        liveUrl: 'https://resume-roaster.vercel.app/',
-        year: 2023,
-        description:
-            'Resume Roaster is a web application designed to provide tailored resume feedback and professional writing services. Built with Next.js, PostgreSQL, Prisma, and Tailwind CSS, it integrates GPT-4 for AI-powered recommendations. The platform also includes peer-to-peer reviews with a points-based system, fostering a collaborative and engaging experience. Targeting freshers, experienced professionals, and programmers, it helps optimize resumes for job-specific success.',
-        role: `As the sole developer and business owner, I:<br/>
-        - Designed and developed the platform end-to-end using Next.js, PostgreSQL, Prisma, and Tailwind CSS.<br/>
-        - Integrated GPT-4 for AI-driven feedback and insights.<br/>
-        - Implemented complex SQL queries, including one to identify the top two resumes based on user points.`,
-    },
-    {
-        title: 'Real Estate',
-        slug: 'property-pro',
-        techStack: [
-            'React.js',
-            'Redux',
-            'Tailwind CSS',
-            'React i18n',
-            'Framer Motion',
-        ],
-        thumbnail: '/projects/thumbnail/property-pro.jpg',
-        longThumbnail: '/projects/long/property-pro.jpg',
-        images: [
-            '/projects/images/property-pro-1.png',
-            '/projects/images/property-pro-2.png',
-            '/projects/images/property-pro-3.png',
-        ],
-        liveUrl: 'https://demo.propertypro.siphertech.com/',
-        year: 2023,
-        description:
-            'PropertyPro is a real estate management platform offering users a seamless experience to explore, manage, and view property listings. The application emphasizes accessibility and responsive design, ensuring a smooth interface across devices.',
-        role: `As a full-stack developer, I:<br/>
-        - Built the frontend using React, Redux, RTK Query, Framer Motion, and Tailwind CSS.<br/>
-        - Integrated dynamic state management for efficient handling of property data.<br/>
-        - Implemented multi-language support with React i18n to cater to diverse audiences.<br/>
-        - Enhanced user interaction with animations and transitions using Framer Motion.`,
-    },
-    {
-        title: 'Consulting Finance',
-        slug: 'crenotive',
-        techStack: ['HTML', 'CSS & SCSS', 'Javascript', 'Bootstrap'],
-        thumbnail: '/projects/thumbnail/consulting-finance.jpg',
-        longThumbnail: '/projects/long/consulting-finance.jpg',
-        images: [
-            '/projects/images/consulting-finance-1.png',
-            '/projects/images/consulting-finance-2.png',
-            '/projects/images/consulting-finance-3.png',
-        ],
-        sourceCode: 'https://github.com/Tajmirul/crenotive',
-        liveUrl: 'https://crenotive.netlify.app/',
-        year: 2023,
-        description:
-            'I developed Crenotive, a portfolio website using Html, SASS, and jQuery to showcase services and expertise. The design focuses on responsive user experience and effective presentation of professional achievements.',
-        role: ``,
-    },
-    {
-        title: 'devLinks',
-        slug: 'devLinks',
-        techStack: ['Next.js', 'Formik', 'Drag & Drop', 'Tailwind CSS'],
-        thumbnail: '/projects/thumbnail/devLinks.jpg',
-        longThumbnail: '/projects/long/devLinks.jpg',
-        images: [
-            '/projects/images/devLinks-1.png',
-            '/projects/images/devLinks-2.png',
-            '/projects/images/devLinks-3.png',
-        ],
-        sourceCode: 'https://github.com/Tajmirul/devsLink',
-        liveUrl: 'https://devlinks-demo.vercel.app/auth/signin',
-        year: 2023,
-        description: `One of the most challenging projects in Frontend Mentor.<br/><br/>
-
-            I developed a LinkSharing App as part of the Frontend Mentor challenge, utilizing React, Redux, and Tailwind CSS to create a responsive and feature-rich platform. The app allows users to share, save, and explore links, with a focus on intuitive design and smooth navigation. Advanced state management ensures efficient data handling for user interactions.`,
-        role: ``,
+        thumbnail: '/projects/thumbnail/campusvoice.png',
+        longThumbnail: '/projects/long/campusvoice.png',
+        images: ['/projects/images/campusvoice-1.png'],
     },
 ];
 
