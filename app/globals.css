@@ -168,38 +168,10 @@
         animation: scanline 5.5s linear infinite;
     }
 
-    .radar-ring {
-        background:
-            radial-gradient(
-                circle,
-                rgba(176, 118, 255, 0.2) 0 2px,
-                transparent 3px
-            ),
-            repeating-radial-gradient(
-                circle,
-                transparent 0 38px,
-                rgba(176, 118, 255, 0.2) 39px 40px
-            ),
-            conic-gradient(
-                from 0deg,
-                rgba(176, 118, 255, 0.5),
-                rgba(176, 118, 255, 0.03),
-                rgba(226, 132, 255, 0.16),
-                rgba(176, 118, 255, 0.5)
-            );
-        animation: radar-spin 18s linear infinite;
-    }
-
     .text-glow {
         text-shadow:
             0 0 12px rgba(176, 118, 255, 0.34),
             0 0 28px rgba(176, 118, 255, 0.12);
-    }
-}
-
-@keyframes radar-spin {
-    to {
-        transform: rotate(360deg);
     }
 }
 
