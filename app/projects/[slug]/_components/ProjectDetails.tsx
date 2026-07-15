@@ -35,7 +35,7 @@ const ProjectDetails = ({ project }: Props) => {
     );
 
     return (
-        <section className="pb-20 pt-28">
+        <section className="pb-20 pt-8">
             <div className="container" ref={containerRef}>
                 <TransitionLink
                     back
@@ -53,10 +53,9 @@ const ProjectDetails = ({ project }: Props) => {
                             {project.title}
                         </h1>
 
-                        <div className="mt-8 grid grid-cols-2 gap-3">
-                            <div className="hud-readout">Year: {project.year}</div>
-                            <div className="hud-readout">
-                                Images: {project.images.length}
+                        <div className="mt-8">
+                            <div className="hud-readout inline-block">
+                                Year: {project.year}
                             </div>
                         </div>
 
