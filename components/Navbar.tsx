@@ -1,8 +1,10 @@
 'use client';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { CircuitBoard, Menu, MoveUpRight, X } from 'lucide-react';
-import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
+import { CONTACT_MAILTO, GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
 
 const COLORS = [
     'bg-primary text-primary-foreground',
@@ -28,14 +30,19 @@ const MENU_LINKS = [
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <>
             <div className="sticky top-0 z-[4] pointer-events-none">
                 <div className="container pt-4">
                     <div className="hud-panel pointer-events-auto flex h-14 items-center justify-between px-4">
-                        <a
+                        <Link
                             href="/"
+                            // Already home: a same-page Link won't scroll, so do it ourselves
+                            onClick={() => {
+                                if (pathname === '/') window.scrollTo({ top: 0 });
+                            }}
                             className="flex items-center gap-3 text-left"
                         >
                             <span className="flex size-9 items-center justify-center border border-primary/35 bg-primary/10 text-primary">
@@ -46,7 +53,7 @@ const Navbar = () => {
                                     FARDIN SARAF
                                 </span>
                             </span>
-                        </a>
+                        </Link>
 
                         <nav className="hidden items-center gap-1 md:flex">
                             {MENU_LINKS.slice(1).map((link) => (
@@ -147,7 +154,7 @@ const Navbar = () => {
                 <div className="w-full max-w-[300px] mx-8 sm:mx-auto">
                     <p className="hud-kicker mb-4">GET IN TOUCH</p>
                     <a
-                        href={`mailto:${GENERAL_INFO.email}`}
+                        href={CONTACT_MAILTO}
                         className="text-primary"
                     >
                         {GENERAL_INFO.email}

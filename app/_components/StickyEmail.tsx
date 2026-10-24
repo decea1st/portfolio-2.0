@@ -1,11 +1,11 @@
-import { GENERAL_INFO } from '@/lib/data';
+import { CONTACT_MAILTO, GENERAL_INFO } from '@/lib/data';
 import React from 'react';
 
 const StickyEmail = () => {
     return (
         <div className="max-xl:hidden fixed bottom-32 left-0 block">
             <a
-                href={`mailto:${GENERAL_INFO.email}`}
+                href={CONTACT_MAILTO}
                 className="px-3 text-primary/70 tracking-[1px] transition-all hover:text-primary"
                 style={{
                     textOrientation: 'mixed',

@@ -48,6 +48,8 @@
     /* Project carousel */
     --carousel-side-opacity: 0.6; /* How visible the cards beside the active project are: 0 = invisible, 1 = solid */
     --scanline-opacity: 0.3; /* Striped "hologram" effect on the active project's image: 0 = off, 1 = full */
+    --carousel-image-fade: 0.15; /* How strongly screenshots fade into the card at the bottom: 0 = no fade, 1 = fully hidden */
+    --carousel-image-fade-start: 0%; /* Where the fade begins: 0% = from the very top, 50% = only the bottom half */
 
     /* Rarely used (UI library defaults) */
     --card: 0 0% 100%;
@@ -93,6 +95,8 @@
     /* Project carousel */
     --carousel-side-opacity: 0.35; /* How visible the cards beside the active project are */
     --scanline-opacity: 1; /* Striped "hologram" effect on the active project's image */
+    --carousel-image-fade: 0.8; /* How strongly screenshots fade into the card at the bottom */
+    --carousel-image-fade-start: 0%; /* Where the fade begins */
 
     /* Rarely used (UI library defaults) */
     --card: 220 10% 10%;

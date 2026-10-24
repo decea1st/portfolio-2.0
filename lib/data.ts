@@ -7,6 +7,11 @@ export const GENERAL_INFO = {
     emailBody: 'Hi Fardin, I am reaching out to you because...',
 };
 
+// Opens a new email with the subject and opening line above already filled in
+export const CONTACT_MAILTO = `mailto:${GENERAL_INFO.email}?subject=${encodeURIComponent(
+    GENERAL_INFO.emailSubject,
+)}&body=${encodeURIComponent(GENERAL_INFO.emailBody)}`;
+
 export const SOCIAL_LINKS = [
     { name: 'GitHub', url: 'https://github.com/Decea1st' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/fardin-saraf/' },

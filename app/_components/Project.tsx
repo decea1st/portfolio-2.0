@@ -61,7 +61,14 @@ const Project = ({ index, project, isActive = false }: Props) => {
                     </>
                 )}
 
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,hsl(var(--background-light)/0.8))]" />
+                {/* Strength and start point live in globals.css (--carousel-image-fade*) */}
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        background:
+                            'linear-gradient(180deg, transparent var(--carousel-image-fade-start), hsl(var(--background-light) / var(--carousel-image-fade)))',
+                    }}
+                />
                 <div className="absolute left-4 top-4 hud-readout text-primary">
                     SYS-{(index + 1).toString().padStart(2, '0')}
                 </div>

@@ -1,4 +1,4 @@
-import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
+import { CONTACT_MAILTO, GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
 import { Mail, SatelliteDish } from 'lucide-react';
 
 const Footer = () => {
@@ -12,10 +12,10 @@ const Footer = () => {
                     <div>
                         <p className="hud-kicker">Contact</p>
                         <h2 className="mt-4 font-anton text-5xl leading-none text-primary text-glow md:text-7xl">
-                            LET'S BUILD THE NEXT INTERFACE
+                            LET&apos;S BUILD THE NEXT INTERFACE
                         </h2>
                         <a
-                            href={`mailto:${GENERAL_INFO.email}`}
+                            href={CONTACT_MAILTO}
                             className="mt-6 inline-flex items-center gap-3 text-lg text-foreground transition hover:text-primary"
                         >
                             <Mail size={20} />

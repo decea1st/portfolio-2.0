@@ -29,8 +29,10 @@ const ProjectList = () => {
     const carouselRef = useRef<HTMLDivElement>(null);
     const rigRef = useRef<HTMLDivElement>(null);
     const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+    // Where the rig is heading, not where it is mid-spin, so rapid clicks stack up
     const rotationRef = useRef(0);
-    const isAnimatingRef = useRef(false);
+    // Mirrors currentIndex so back-to-back clicks never read a stale value
+    const indexRef = useRef(0);
     const isInViewRef = useRef(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -77,62 +79,56 @@ const ProjectList = () => {
         { scope: containerRef },
     );
 
-    const goTo = useCallback(
-        (newIndex: number) => {
-            if (isAnimatingRef.current || newIndex === currentIndex) return;
+    const goTo = useCallback((newIndex: number) => {
+        if (newIndex === indexRef.current) return;
 
-            const n = PROJECTS.length;
-            let stepDiff = newIndex - currentIndex;
-            if (stepDiff > n / 2) stepDiff -= n;
-            if (stepDiff < -n / 2) stepDiff += n;
+        const n = PROJECTS.length;
+        let stepDiff = newIndex - indexRef.current;
+        if (stepDiff > n / 2) stepDiff -= n;
+        if (stepDiff < -n / 2) stepDiff += n;
 
-            const targetRotation =
-                rotationRef.current - stepDiff * STEP_DEGREES;
+        rotationRef.current -= stepDiff * STEP_DEGREES;
+        indexRef.current = newIndex;
+        setCurrentIndex(newIndex);
 
-            isAnimatingRef.current = true;
-            setCurrentIndex(newIndex);
+        // overwrite: a new click takes over the spin from wherever it currently is
+        gsap.to(rigRef.current, {
+            rotateY: rotationRef.current,
+            duration: ANIM_DURATION,
+            ease: 'power3.out',
+            overwrite: true,
+            onUpdate: () => {
+                const current = gsap.getProperty(
+                    rigRef.current,
+                    'rotateY',
+                ) as number;
+                cardRefs.current.forEach((card) => {
+                    if (card) gsap.set(card, { rotateY: -current });
+                });
+            },
+        });
 
-            gsap.to(rigRef.current, {
-                rotateY: targetRotation,
+        cardRefs.current.forEach((card, i) => {
+            if (!card) return;
+            const isActive = i === newIndex;
+            gsap.to(card, {
+                opacity: isActive ? 1 : getInactiveOpacity(),
+                scale: isActive ? 1 : INACTIVE_SCALE,
                 duration: ANIM_DURATION,
                 ease: 'power3.out',
-                onUpdate: () => {
-                    const current = gsap.getProperty(
-                        rigRef.current,
-                        'rotateY',
-                    ) as number;
-                    cardRefs.current.forEach((card) => {
-                        if (card) gsap.set(card, { rotateY: -current });
-                    });
-                },
-                onComplete: () => {
-                    rotationRef.current = targetRotation;
-                    isAnimatingRef.current = false;
-                },
+                overwrite: true,
             });
-
-            cardRefs.current.forEach((card, i) => {
-                if (!card) return;
-                const isActive = i === newIndex;
-                gsap.to(card, {
-                    opacity: isActive ? 1 : getInactiveOpacity(),
-                    scale: isActive ? 1 : INACTIVE_SCALE,
-                    duration: ANIM_DURATION,
-                    ease: 'power3.out',
-                });
-            });
-        },
-        [currentIndex],
-    );
+        });
+    }, []);
 
     const next = useCallback(
-        () => goTo((currentIndex + 1) % PROJECTS.length),
-        [currentIndex, goTo],
+        () => goTo((indexRef.current + 1) % PROJECTS.length),
+        [goTo],
     );
 
     const prev = useCallback(
-        () => goTo((currentIndex - 1 + PROJECTS.length) % PROJECTS.length),
-        [currentIndex, goTo],
+        () => goTo((indexRef.current - 1 + PROJECTS.length) % PROJECTS.length),
+        [goTo],
     );
 
     useEffect(() => {

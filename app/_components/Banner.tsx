@@ -1,6 +1,6 @@
 'use client';
 import Button from '@/components/Button';
-import { GENERAL_INFO } from '@/lib/data';
+import { CONTACT_MAILTO, GENERAL_INFO } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import React from 'react';
@@ -10,6 +10,24 @@ gsap.registerPlugin(useGSAP);
 
 const Banner = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const [emailCopied, setEmailCopied] = React.useState(false);
+    const copiedTimerRef = React.useRef<ReturnType<typeof setTimeout>>();
+
+    // Also copy the address: mailto: does nothing for visitors without an email app set up.
+    // The click isn't prevented, so the email app still opens for everyone else.
+    const handleContactClick = () => {
+        navigator.clipboard
+            ?.writeText(GENERAL_INFO.email)
+            .then(() => {
+                setEmailCopied(true);
+                clearTimeout(copiedTimerRef.current);
+                copiedTimerRef.current = setTimeout(
+                    () => setEmailCopied(false),
+                    2500,
+                );
+            })
+            .catch(() => {});
+    };
 
     useGSAP(
         () => {
@@ -55,10 +73,13 @@ const Banner = () => {
                         </Button>
                         <Button
                             as="link"
-                            href={`mailto:${GENERAL_INFO.email}`}
+                            href={CONTACT_MAILTO}
                             variant="secondary"
+                            onClick={handleContactClick}
                         >
-                            Contact Me
+                            <span aria-live="polite">
+                                {emailCopied ? 'Email Copied' : 'Contact Me'}
+                            </span>
                         </Button>
                     </div>
                 </div>
