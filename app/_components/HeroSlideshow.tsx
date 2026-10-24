@@ -1,36 +1,90 @@
 'use client';
 import TransitionLink from '@/components/TransitionLink';
 import { PROJECTS } from '@/lib/data';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const SLIDE_INTERVAL = 3000;
 
+// Everything that differs between the left and right arrow
+const NAV_ARROWS = {
+    prev: {
+        label: 'Previous project',
+        Icon: ChevronLeft,
+        side: 'left-0',
+        glow: 'bg-gradient-to-r',
+        nudge: 'group-hover/nav:-translate-x-1',
+    },
+    next: {
+        label: 'Next project',
+        Icon: ChevronRight,
+        side: 'right-0',
+        glow: 'bg-gradient-to-l',
+        nudge: 'group-hover/nav:translate-x-1',
+    },
+} as const;
+
+interface NavArrowProps {
+    direction: keyof typeof NAV_ARROWS;
+    onClick: () => void;
+}
+
+const NavArrow = ({ direction, onClick }: NavArrowProps) => {
+    const { label, Icon, side, glow, nudge } = NAV_ARROWS[direction];
+
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            aria-label={label}
+            className={`group/nav absolute inset-y-0 ${side} z-[2] flex w-[10%] items-center justify-center text-white outline-none`}
+        >
+            {/* Edge glow that fades in toward the center on hover */}
+            <span
+                className={`absolute inset-0 ${glow} from-primary/35 to-transparent opacity-0 transition-opacity duration-300 group-hover/nav:opacity-100 group-focus-visible/nav:opacity-100`}
+            />
+            <Icon
+                size={28}
+                className={`relative drop-shadow-md transition-transform duration-300 ${nudge}`}
+            />
+        </button>
+    );
+};
+
 const HeroSlideshow = () => {
     const [index, setIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
 
+    // Re-armed on every slide change so manual navigation resets the timer
     useEffect(() => {
         if (isPaused || PROJECTS.length < 2) return;
 
-        const id = setInterval(
+        const id = setTimeout(
             () => setIndex((i) => (i + 1) % PROJECTS.length),
             SLIDE_INTERVAL,
         );
-        return () => clearInterval(id);
-    }, [isPaused]);
+        return () => clearTimeout(id);
+    }, [index, isPaused]);
+
+    const goTo = (step: number) =>
+        setIndex((i) => (i + step + PROJECTS.length) % PROJECTS.length);
 
     const active = PROJECTS[index];
 
     return (
-        <TransitionLink
-            href={`/projects/${active.slug}`}
-            className="hud-panel group block"
+        <div
+            className="hud-panel group"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            aria-label={`View project: ${active.title}`}
         >
+            {/* Full-panel link sits under the nav buttons so they stay clickable */}
+            <TransitionLink
+                href={`/projects/${active.slug}`}
+                className="absolute inset-0 z-[1]"
+                aria-label={`View project: ${active.title}`}
+            />
+
             <div className="flex items-center justify-between border-b border-primary/15 px-5 py-3">
                 <p className="hud-kicker">My Projects</p>
                 <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
@@ -54,6 +108,13 @@ const HeroSlideshow = () => {
                     />
                 ))}
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(2,8,13,0.75))]" />
+
+                {PROJECTS.length > 1 && (
+                    <>
+                        <NavArrow direction="prev" onClick={() => goTo(-1)} />
+                        <NavArrow direction="next" onClick={() => goTo(1)} />
+                    </>
+                )}
             </div>
 
             <div className="flex items-center justify-between gap-4 px-5 py-4">
@@ -78,7 +139,7 @@ const HeroSlideshow = () => {
                     />
                 ))}
             </div>
-        </TransitionLink>
+        </div>
     );
 };
 
