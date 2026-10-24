@@ -93,7 +93,7 @@ const HeroSlideshow = () => {
                 </p>
             </div>
 
-            <div className="relative aspect-video overflow-hidden bg-black/30">
+            <div className="relative aspect-video overflow-hidden bg-shade/30">
                 {PROJECTS.map((project, i) => (
                     <Image
                         key={project.slug}
@@ -107,7 +107,7 @@ const HeroSlideshow = () => {
                         }`}
                     />
                 ))}
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,rgba(2,8,13,0.75))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_55%,hsl(var(--background-light)/0.75))]" />
 
                 {PROJECTS.length > 1 && (
                     <>
@@ -124,7 +124,7 @@ const HeroSlideshow = () => {
                         {active.title}
                     </h3>
                 </div>
-                <div className="flex size-10 shrink-0 items-center justify-center border border-primary/30 bg-black/50 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="flex size-10 shrink-0 items-center justify-center border border-primary/30 bg-background/70 text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
                     <ArrowUpRight size={18} />
                 </div>
             </div>

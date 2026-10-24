@@ -15,8 +15,11 @@ interface Props {
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+// Store listings have long query-string URLs, so show the store name instead
 const displayUrl = (url: string) =>
-    url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+    url.includes('play.google.com')
+        ? 'Google Play'
+        : url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 const ProjectDetails = ({ project }: Props) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -102,7 +105,7 @@ const ProjectDetails = ({ project }: Props) => {
                             )}
                         </div>
 
-                        <div className="mt-8 overflow-hidden border border-primary/20 bg-black/30">
+                        <div className="mt-8 overflow-hidden border border-primary/20 bg-shade/30">
                             <Image
                                 src={project.thumbnail}
                                 alt={`${project.title} landing page`}
@@ -130,7 +133,13 @@ const ProjectDetails = ({ project }: Props) => {
                             </div>
                         )}
 
-                        <div className="project-reveal grid gap-4">
+                        <div
+                            className={`project-reveal grid ${
+                                project.mobileScreenshots
+                                    ? 'grid-cols-3 gap-3'
+                                    : 'gap-4'
+                            }`}
+                        >
                             {project.images.map((image, index) => (
                                 <a
                                     href={image}
@@ -138,9 +147,18 @@ const ProjectDetails = ({ project }: Props) => {
                                     key={image}
                                     className="hud-panel group block overflow-hidden"
                                 >
-                                    <div className="flex items-center justify-between border-b border-primary/15 px-4 py-3">
+                                    <div className="flex items-center justify-between border-b border-primary/15 px-3 py-3 sm:px-4">
                                         <p className="hud-kicker">
-                                            Capture{' '}
+                                            {/* Phone columns are too narrow for the full label on small screens */}
+                                            <span
+                                                className={
+                                                    project.mobileScreenshots
+                                                        ? 'hidden sm:inline'
+                                                        : undefined
+                                                }
+                                            >
+                                                Capture{' '}
+                                            </span>
                                             {(index + 1)
                                                 .toString()
                                                 .padStart(2, '0')}
@@ -153,8 +171,16 @@ const ProjectDetails = ({ project }: Props) => {
                                     <Image
                                         src={image}
                                         alt={`${project.title} screenshot ${index + 1}`}
-                                        width="1100"
-                                        height="620"
+                                        width={
+                                            project.mobileScreenshots
+                                                ? 600
+                                                : 1100
+                                        }
+                                        height={
+                                            project.mobileScreenshots
+                                                ? 1176
+                                                : 620
+                                        }
                                         className="h-auto w-full object-cover object-top opacity-85 transition duration-700 group-hover:scale-[1.02] group-hover:opacity-100"
                                     />
                                 </a>

@@ -2,7 +2,8 @@ import type { Config } from 'tailwindcss';
 import tailwindAnimate from 'tailwindcss-animate';
 
 export default {
-    darkMode: ['class'],
+    // `dark:` classes apply while the dark theme class is on <html>
+    darkMode: ['selector', '.theme-dark-purple'],
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -47,6 +48,8 @@ export default {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
+                shade: 'hsl(var(--shade))',
+                'icon-tile': 'hsl(var(--icon-tile))',
                 chart: {
                     '1': 'hsl(var(--chart-1))',
                     '2': 'hsl(var(--chart-2))',

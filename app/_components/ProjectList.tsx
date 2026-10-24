@@ -14,8 +14,15 @@ const STEP_DEGREES = 360 / PROJECTS.length;
 const RADIUS = 460;
 const PERSPECTIVE = 1800;
 const ANIM_DURATION = 0.9;
-const INACTIVE_OPACITY = 0.35;
 const INACTIVE_SCALE = 0.88;
+
+// Side-card opacity is set per theme (--carousel-side-opacity in globals.css)
+const getInactiveOpacity = () =>
+    parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue(
+            '--carousel-side-opacity',
+        ),
+    ) || 0.35;
 
 const ProjectList = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -51,7 +58,7 @@ const ProjectList = () => {
                     z: Math.cos(rad) * RADIUS,
                     rotateY: 0,
                     scale: i === 0 ? 1 : INACTIVE_SCALE,
-                    opacity: i === 0 ? 1 : INACTIVE_OPACITY,
+                    opacity: i === 0 ? 1 : getInactiveOpacity(),
                     transformOrigin: '50% 50%',
                 });
             });
@@ -108,7 +115,7 @@ const ProjectList = () => {
                 if (!card) return;
                 const isActive = i === newIndex;
                 gsap.to(card, {
-                    opacity: isActive ? 1 : INACTIVE_OPACITY,
+                    opacity: isActive ? 1 : getInactiveOpacity(),
                     scale: isActive ? 1 : INACTIVE_SCALE,
                     duration: ANIM_DURATION,
                     ease: 'power3.out',
@@ -199,7 +206,7 @@ const ProjectList = () => {
                                 type="button"
                                 onClick={prev}
                                 aria-label="Previous project"
-                                className="absolute left-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-black/70 text-primary transition hover:bg-primary hover:text-primary-foreground md:left-4"
+                                className="absolute left-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-background/80 text-primary transition hover:bg-primary hover:text-primary-foreground md:left-4"
                             >
                                 <ChevronLeft size={22} />
                             </button>
@@ -207,7 +214,7 @@ const ProjectList = () => {
                                 type="button"
                                 onClick={next}
                                 aria-label="Next project"
-                                className="absolute right-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-black/70 text-primary transition hover:bg-primary hover:text-primary-foreground md:right-4"
+                                className="absolute right-2 top-1/2 z-20 flex size-12 -translate-y-1/2 items-center justify-center border border-primary/30 bg-background/80 text-primary transition hover:bg-primary hover:text-primary-foreground md:right-4"
                             >
                                 <ChevronRight size={22} />
                             </button>

@@ -16,7 +16,7 @@ const Experiences = () => {
                         {MY_EXPERIENCE.map((item, index) => (
                             <div
                                 key={`${item.company}-${item.title}`}
-                                className="experience-item border border-primary/15 bg-black/20 p-5 transition hover:border-primary/45 hover:bg-primary/10 md:p-6"
+                                className="experience-item border border-primary/15 bg-shade/20 p-5 transition hover:border-primary/45 hover:bg-primary/10 md:p-6"
                             >
                                 <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-start">
                                     <div className="flex gap-4">

@@ -2,6 +2,9 @@ import SectionTitle from '@/components/SectionTitle';
 import { MY_STACK } from '@/lib/data';
 import Image from 'next/image';
 
+const LOGO_CLASSES =
+    'max-h-7 object-contain opacity-90 transition group-hover:scale-110';
+
 const Skills = () => {
     return (
         <section
@@ -35,17 +38,32 @@ const Skills = () => {
                             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                                 {value.map((item) => (
                                     <div
-                                        className="group flex min-h-14 items-center gap-3 border border-primary/15 bg-black/25 px-3 py-2.5 transition hover:border-primary/50 hover:bg-primary/10"
+                                        className="group flex min-h-14 items-center gap-3 border border-primary/15 bg-shade/25 px-3 py-2.5 transition hover:border-primary/50 hover:bg-primary/10"
                                         key={item.name}
                                     >
                                         {'icon' in item && item.icon ? (
-                                            <div className="flex size-9 shrink-0 items-center justify-center border border-primary/15 bg-background/70">
+                                            <div className="flex size-9 shrink-0 items-center justify-center border border-primary/15 bg-icon-tile">
+                                                {/* White logos get a dark twin for the light theme */}
+                                                {'iconOnLight' in item && item.iconOnLight && (
+                                                    <Image
+                                                        src={item.iconOnLight}
+                                                        alt={item.name}
+                                                        width="28"
+                                                        height="28"
+                                                        className={`${LOGO_CLASSES} dark:hidden`}
+                                                    />
+                                                )}
                                                 <Image
                                                     src={item.icon}
                                                     alt={item.name}
                                                     width="28"
                                                     height="28"
-                                                    className="max-h-7 object-contain opacity-90 transition group-hover:scale-110"
+                                                    className={
+                                                        'iconOnLight' in item &&
+                                                        item.iconOnLight
+                                                            ? `${LOGO_CLASSES} hidden dark:block`
+                                                            : LOGO_CLASSES
+                                                    }
                                                 />
                                             </div>
                                         ) : null}

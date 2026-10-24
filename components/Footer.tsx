@@ -23,7 +23,7 @@ const Footer = () => {
                         </a>
                     </div>
 
-                    <div className="min-w-[220px] border border-primary/15 bg-black/25 p-5">
+                    <div className="min-w-[220px] border border-primary/15 bg-shade/25 p-5">
                         <SatelliteDish className="text-secondary" />
                         <p className="hud-kicker mt-5">Channels</p>
                         <div className="mt-4 flex flex-col gap-3">

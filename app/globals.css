@@ -2,36 +2,107 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    :root {
-        --background: 220 13% 4%;
-        --background-light: 220 11% 9%;
-        --foreground: 30 12% 88%;
+/*
+ * ─── COLOR THEMES ────────────────────────────────────────────────────────
+ *
+ * Every color is written as three numbers:  HUE  SATURATION%  LIGHTNESS%
+ *
+ *   HUE (0–360) picks the color on the color wheel:
+ *       0 red · 25 orange · 50 yellow · 120 green · 180 teal
+ *       210 blue · 270 purple · 300 magenta · 340 pink · 360 red again
+ *   SATURATION: 0% = grey, 100% = as vivid as possible
+ *   LIGHTNESS:  0% = black, 50% = the pure color, 100% = white
+ *
+ * Example: "356 78% 50%" is a strong red, "0 0% 97%" is an off-white.
+ *
+ * Two themes live below. The light red one is the default. To switch to
+ * the dark purple one, add className="theme-dark-purple" to the <html>
+ * tag in app/layout.tsx.
+ *
+ * (Kept outside @layer on purpose: Tailwind strips unused classes inside
+ * a layer, which would delete whichever theme isn't currently in use.)
+ */
+/* ── Theme: light with red accents (the default) ── */
+:root {
+    /* Backgrounds */
+    --background: 0 0% 96%; /* Page background: off-white */
+    --background-light: 0 0% 100%; /* Panels and cards: pure white */
 
-        --card: 220 10% 10%;
-        --card-foreground: 30 12% 90%;
-        --popover: 220 10% 10%;
-        --popover-foreground: 30 12% 90%;
+    /* Text */
+    --foreground: 0 0% 9%; /* Main text: near-black */
+    --muted-foreground: 0 0% 38%; /* Secondary text (dates, descriptions): medium grey */
 
-        --primary: 268 88% 70%;
-        --primary-foreground: 220 13% 4%;
-        --secondary: 292 82% 72%;
-        --secondary-foreground: 220 13% 4%;
-        --muted: 220 8% 14%;
-        --muted-foreground: 30 7% 68%;
-        --accent: 220 8% 17%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 8 82% 46%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 270 12% 24%;
-        --input: 220 8% 14%;
-        --ring: 268 88% 70%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
+    /* Accent colors */
+    --primary: 356 78% 50%; /* Main accent: strong red (headings, borders, highlights, hover fills) */
+    --primary-foreground: 0 0% 100%; /* Text on top of a red fill: white */
+    --secondary: 350 65% 32%; /* Second accent: deep wine red (some labels, panel corners) */
+    --secondary-foreground: 0 0% 100%; /* Text on top of a wine fill: white */
+
+    /* Lines and effects */
+    --border: 0 0% 85%; /* Default border lines: light grey */
+    --ring: 356 78% 50%; /* Keyboard focus outline: same red as the main accent */
+    --shade: 0 0% 60%; /* Tint for overlays and sunken boxes: soft grey */
+    --vignette-opacity: 0.2; /* Darkening around the screen edges: 0 = none, 1 = strong */
+    --icon-tile: 0 0% 100%; /* Square behind each tech-stack logo: white */
+
+    /* Project carousel */
+    --carousel-side-opacity: 0.6; /* How visible the cards beside the active project are: 0 = invisible, 1 = solid */
+    --scanline-opacity: 0.3; /* Striped "hologram" effect on the active project's image: 0 = off, 1 = full */
+
+    /* Rarely used (UI library defaults) */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    --muted: 0 0% 92%;
+    --accent: 0 0% 92%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 8 82% 46%;
+    --destructive-foreground: 0 0% 98%;
+    --input: 0 0% 90%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+}
+
+/* ── Theme: dark with purple accents (the original look) ── */
+.theme-dark-purple {
+    /* Backgrounds */
+    --background: 220 13% 4%; /* Page background: near-black */
+    --background-light: 220 11% 9%; /* Panels and cards: charcoal */
+
+    /* Text */
+    --foreground: 30 12% 88%; /* Main text: warm off-white */
+    --muted-foreground: 30 7% 68%; /* Secondary text: warm light grey */
+
+    /* Accent colors */
+    --primary: 268 88% 70%; /* Main accent: lavender purple */
+    --primary-foreground: 220 13% 4%; /* Text on top of a purple fill: near-black */
+    --secondary: 292 82% 72%; /* Second accent: orchid pink */
+    --secondary-foreground: 220 13% 4%; /* Text on top of a pink fill: near-black */
+
+    /* Lines and effects */
+    --border: 270 12% 24%; /* Default border lines: dark purple-grey */
+    --ring: 268 88% 70%; /* Keyboard focus outline: lavender purple */
+    --shade: 0 0% 0%; /* Tint for overlays and sunken boxes: black */
+    --vignette-opacity: 0.85; /* Darkening around the screen edges */
+    --icon-tile: 220 13% 5%; /* Square behind each tech-stack logo: near-black */
+
+    /* Project carousel */
+    --carousel-side-opacity: 0.35; /* How visible the cards beside the active project are */
+    --scanline-opacity: 1; /* Striped "hologram" effect on the active project's image */
+
+    /* Rarely used (UI library defaults) */
+    --card: 220 10% 10%;
+    --card-foreground: 30 12% 90%;
+    --popover: 220 10% 10%;
+    --popover-foreground: 30 12% 90%;
+    --muted: 220 8% 14%;
+    --accent: 220 8% 17%;
+    --accent-foreground: 0 0% 98%;
+    --input: 220 8% 14%;
 }
 
 @layer base {
@@ -48,9 +119,9 @@
         @apply bg-background text-foreground font-roboto-flex;
         background: linear-gradient(
             180deg,
-            #070708 0%,
-            #111113 52%,
-            #070708 100%
+            hsl(var(--background)) 0%,
+            hsl(var(--background-light)) 52%,
+            hsl(var(--background)) 100%
         );
         min-height: 100vh;
         overflow-x: hidden;
@@ -62,10 +133,10 @@
         z-index: -2;
         pointer-events: none;
         background-image:
-            linear-gradient(rgba(176, 118, 255, 0.045) 1px, transparent 1px),
+            linear-gradient(hsl(var(--primary) / 0.045) 1px, transparent 1px),
             linear-gradient(
                 90deg,
-                rgba(176, 118, 255, 0.045) 1px,
+                hsl(var(--primary) / 0.045) 1px,
                 transparent 1px
             );
         background-size:
@@ -88,7 +159,7 @@
             linear-gradient(
                 90deg,
                 transparent 0 48%,
-                rgba(176, 118, 255, 0.035) 50%,
+                hsl(var(--primary) / 0.035) 50%,
                 transparent 52%
             ),
             radial-gradient(
@@ -97,7 +168,7 @@
                 rgba(0, 0, 0, 0.42) 76%,
                 rgba(0, 0, 0, 0.72) 100%
             );
-        opacity: 0.85;
+        opacity: var(--vignette-opacity);
     }
 }
 
@@ -106,14 +177,29 @@
         @apply gap-5;
     }
 
+    /* Role title on project pages */
+    .markdown-text h3 {
+        @apply mb-3 mt-7 font-anton text-2xl uppercase leading-tight tracking-wide text-foreground first:mt-0;
+    }
+
+    /* "Key Features": body-sized, just bolder */
+    .markdown-text h4 {
+        @apply mt-3 font-bold text-xl text-foreground;
+    }
+
+    /* Gap between "Key Features" and its first bullet (each step is 4px, minus = tighter) */
+    .markdown-text h4 + ul {
+        @apply mt-0;
+    }
+
     .markdown-text ul {
-        @apply pl-5 mt-2 list-disc;
+        @apply pl-5 mt-2 list-disc marker:text-primary;
     }
 
     .hud-panel {
-        @apply relative border border-white/10 bg-background-light/90;
+        @apply relative border border-foreground/10 bg-background-light/90;
         box-shadow:
-            inset 0 0 24px rgba(176, 118, 255, 0.035),
+            inset 0 0 24px hsl(var(--primary) / 0.035),
             0 0 28px rgba(0, 0, 0, 0.18);
     }
 
@@ -145,7 +231,7 @@
     }
 
     .hud-readout {
-        @apply border border-white/10 bg-black/30 px-3 py-2 text-xs uppercase tracking-[0.16em] text-muted-foreground;
+        @apply border border-foreground/10 bg-background/60 px-3 py-2 text-xs uppercase tracking-[0.16em] text-muted-foreground;
     }
 
     .scanline {
@@ -162,7 +248,7 @@
         background: linear-gradient(
             180deg,
             transparent,
-            rgba(176, 118, 255, 0.08),
+            hsl(var(--primary) / 0.08),
             transparent
         );
         animation: scanline 5.5s linear infinite;
@@ -170,8 +256,8 @@
 
     .text-glow {
         text-shadow:
-            0 0 12px rgba(176, 118, 255, 0.34),
-            0 0 28px rgba(176, 118, 255, 0.12);
+            0 0 12px hsl(var(--primary) / 0.34),
+            0 0 28px hsl(var(--primary) / 0.12);
     }
 }
 

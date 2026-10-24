@@ -78,7 +78,7 @@ const Navbar = () => {
 
             <div
                 className={cn(
-                    'overlay fixed inset-0 z-[2] bg-black/75 backdrop-blur-sm transition-all duration-150',
+                    'overlay fixed inset-0 z-[2] bg-shade/75 backdrop-blur-sm transition-all duration-150',
                     {
                         'opacity-0 invisible pointer-events-none': !isMenuOpen,
                     },

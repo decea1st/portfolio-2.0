@@ -50,8 +50,8 @@ const Button = ({
     ...rest
 }: Props) => {
     const variantClasses = {
-        primary: `border border-primary/45 bg-primary/12 text-primary shadow-[0_0_20px_rgba(176,118,255,0.08)] hover:bg-primary hover:text-primary-foreground`,
-        secondary: `border border-secondary/50 bg-secondary/15 text-secondary hover:bg-secondary hover:text-secondary-foreground`,
+        primary: `border border-primary/45 text-primary shadow-[0_0_20px_hsl(var(--primary)/0.08)] hover:bg-primary hover:text-primary-foreground`,
+        secondary: `border border-secondary/50 text-secondary hover:bg-secondary hover:text-secondary-foreground`,
         success: `bg-green-500 text-white hover:bg-green-600`,
         warning: `bg-orange-500 text-white hover:bg-orange-600`,
         danger: `bg-destructive text-destructive-foreground hover:bg-destructive/70`,

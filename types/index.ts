@@ -24,6 +24,8 @@ export interface IProject {
     thumbnail: string;
     longThumbnail: string;
     images: string[];
+    // Tall phone captures: shown side by side instead of full width
+    mobileScreenshots?: boolean;
     slug: string;
     liveUrl?: string;
     sourceCode?: string;

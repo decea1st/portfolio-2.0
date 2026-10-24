@@ -28,9 +28,11 @@ export const MY_STACK = {
         },
         {
             name: 'CSS',
+            icon: '/logo/css.svg',
         },
         {
             name: 'HTML',
+            icon: '/logo/html.svg',
         },
         {
             name: 'C++',
@@ -38,6 +40,7 @@ export const MY_STACK = {
         },
         {
             name: 'Java',
+            icon: '/logo/java.svg',
         },
         {
             name: 'SQL',
@@ -56,6 +59,7 @@ export const MY_STACK = {
         {
             name: 'Next.js',
             icon: '/logo/next.png',
+            iconOnLight: '/logo/next-on-light.png',
         },
         {
             name: 'Tailwind CSS',
@@ -86,10 +90,12 @@ export const MY_STACK = {
         {
             name: 'AWS',
             icon: '/logo/aws.png',
+            iconOnLight: '/logo/aws-on-light.png',
         },
         {
             name: 'Docker',
             icon: '/logo/docker.svg',
+            iconOnLight: '/logo/docker-on-light.svg',
         },
         {
             name: 'Git',
@@ -98,6 +104,7 @@ export const MY_STACK = {
         {
             name: 'GitHub',
             icon: '/logo/github.png',
+            iconOnLight: '/logo/github-on-light.png',
         },
         {
             name: 'Claude',
@@ -106,10 +113,12 @@ export const MY_STACK = {
         {
             name: 'Cursor',
             icon: '/logo/cursor.svg',
+            iconOnLight: '/logo/cursor-on-light.svg',
         },
         {
             name: 'Codex',
             icon: '/logo/codex.svg',
+            iconOnLight: '/logo/codex-on-light.svg',
         },
     ],
 };
@@ -118,12 +127,53 @@ export const PROJECTS: IProject[] = [
     {
         title: 'Clustr',
         slug: 'clustr',
+        liveUrl:
+            'https://play.google.com/store/apps/details?id=com.justin.nudge',
+        year: 2026,
+        description: `
+      Clustr is a social productivity app for iOS and Android built around accountability through other people. Instead of tracking goals alone, users join shared goals with friends, schedule activities together, and keep each other on track through chat, calls, and check-ins. The Android app is now available on the Google Play Store.
+
+      <h4>Key Features</h4>
+      <ul>
+        <li>Shared goals with progress tracking, attendance, and a feed of friends' activities</li>
+        <li>Group scheduling with a drag-to-select calendar that shows everyone's busy times and flags conflicts</li>
+        <li>Real-time chat with replies, reactions, photos, and GIFs, plus in-app voice calls</li>
+        <li>Live map showing where friends are during an activity</li>
+        <li>Push notifications for invites, reminders, and messages, with inline replies on Android</li>
+      </ul>
+      `,
+        role: `
+      <h3>Full-Stack Mobile Developer</h3>
+      I joined this early-stage startup in August 2025 and built the group scheduling calendar, much of the chat experience, the push notification system, and the interactive onboarding tutorial. That work spanned the React Native (Expo) app and the Firebase backend (Cloud Functions, Firestore, Realtime Database), and I also handled Android release builds.
+      `,
+        techStack: [
+            'React Native',
+            'Expo',
+            'TypeScript',
+            'Firebase',
+            'Node.js',
+            'Kotlin',
+            'Agora',
+            'Reanimated',
+        ],
+        thumbnail: '/projects/thumbnail/clustr-app.png',
+        longThumbnail: '/projects/thumbnail/clustr-app.png',
+        images: [
+            '/projects/images/clustr-app-1.png',
+            '/projects/images/clustr-app-2.png',
+            '/projects/images/clustr-app-3.png',
+        ],
+        mobileScreenshots: true,
+    },
+    {
+        title: 'Clustr Website',
+        slug: 'clustr-website',
         liveUrl: 'https://clustrgoals.com/',
         year: 2026,
         description: `
-      Clustr is a landing page for a social accountability app that helps people find others with similar goals and commit to those goals together. The design uses a clean white layout, direct hero messaging, warm orange accents, and a lightweight product-card visual to explain the concept quickly. <br/><br/>
+      Clustr is a landing page for a social accountability app that helps people find others with similar goals and commit to those goals together. The design uses a clean white layout, direct hero messaging, warm orange accents, and a lightweight product-card visual to explain the concept quickly.
 
-      Key Features:
+      <h4>Key Features</h4>
       <ul>
         <li>Responsive landing page focused on clear product positioning and waitlist conversion</li>
         <li>Minimal navigation and high-contrast call-to-action treatment for quick scanning</li>
@@ -132,7 +182,7 @@ export const PROJECTS: IProject[] = [
       </ul>
       `,
         role: `
-      Designer and Developer <br/>
+      <h3>Designer and Developer</h3>
       I designed and built the public-facing Clustr website, shaping the hero section, visual language, responsive layout, and call-to-action flow for the product's early waitlist launch.
       `,
         techStack: ['React', 'TypeScript', 'CSS', 'Cloudflare'],
@@ -147,9 +197,9 @@ export const PROJECTS: IProject[] = [
         sourceCode: 'https://github.com/decea1st/Outbreak.io',
         year: 2026,
         description: `
-      Outbreak.io is a live public health surveillance dashboard for New York City. Users can track reported symptoms on an interactive map, explore COVID-19, influenza, and RSV trends from official NYC health data, and submit their own anonymous reports. <br/><br/>
+      Outbreak.io is a live public health surveillance dashboard for New York City. Users can track reported symptoms on an interactive map, explore COVID-19, influenza, and RSV trends from official NYC health data, and submit their own anonymous reports.
 
-      Key Features:
+      <h4>Key Features</h4>
       <ul>
         <li>Interactive map of user-reported symptoms across NYC with filtering</li>
         <li>Public analytics dashboard with report volume, condition breakdowns, and surveillance trends</li>
@@ -159,7 +209,7 @@ export const PROJECTS: IProject[] = [
       </ul>
       `,
         role: `
-      Full-Stack Developer <br/>
+      <h3>Full-Stack Developer</h3>
       Started as a five-person senior design project at CCNY; I extended it into a public-facing surveillance tool, building the respiratory illness data pipeline, anonymous reporting flow, and public map and dashboard experience across the Expo frontend and Express API.
       `,
         techStack: [
@@ -185,9 +235,9 @@ export const PROJECTS: IProject[] = [
         sourceCode: 'https://github.com/HashirAligb/campusvoice',
         year: 2025,
         description: `
-      CampusVoice is a community-driven platform where students can raise issues, share feedback, and work together to improve campus life. Students submit and browse campus issues, discuss them, and track their status as they move toward resolution. <br/><br/>
+      CampusVoice is a community-driven platform where students can raise issues, share feedback, and work together to improve campus life. Students submit and browse campus issues, discuss them, and track their status as they move toward resolution.
 
-      Key Features:
+      <h4>Key Features</h4>
       <ul>
         <li>Issue reporting and browsing with community discussion around each report</li>
         <li>Student accounts with profiles for submitting and following issues</li>
@@ -196,7 +246,7 @@ export const PROJECTS: IProject[] = [
       </ul>
       `,
         role: `
-      Full-Stack Developer <br/>
+      <h3>Full-Stack Developer</h3>
       I worked on CampusVoice as part of a small team, contributing across the React + TypeScript frontend and the Supabase backend, including the issue reporting flow and database schema.
       `,
         techStack: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL'],
@@ -211,9 +261,9 @@ export const PROJECTS: IProject[] = [
         sourceCode: 'https://github.com/LoistCloist/brooklyn_hackathon_2026',
         year: 2026,
         description: `
-      TuneAcademy is an AI-powered music education platform that matches students with instructors based on skill gaps identified through audio analysis. Students record themselves playing, get a focused weakness profile, and find teachers who specialize in exactly what they need to sharpen. Winner of the Prenora Dynamics sponsored track at Brooklyn Hacks. <br/><br/>
+      TuneAcademy is an AI-powered music education platform that matches students with instructors based on skill gaps identified through audio analysis. Students record themselves playing, get a focused weakness profile, and find teachers who specialize in exactly what they need to sharpen. Winner of the Prenora Dynamics sponsored track at Brooklyn Hacks.
 
-      Key Features:
+      <h4>Key Features</h4>
       <ul>
         <li>AI audio assessment of pitch accuracy, rhythm consistency, and tone quality across voice, guitar, piano, and saxophone</li>
         <li>Structured, human-readable weakness reports generated from each recording</li>
@@ -223,7 +273,7 @@ export const PROJECTS: IProject[] = [
       </ul>
       `,
         role: `
-      Full-Stack Developer <br/>
+      <h3>Full-Stack Developer</h3>
       Built with a hackathon team at Brooklyn Hacks 2026. I built the FastAPI audio pipeline using Essentia and NumPy to extract pitch, rhythm, and tone quality from recordings, and compared user performance against MIDI references with DTW alignment to score timing, missed notes, and weaknesses.
       `,
         techStack: [
@@ -249,9 +299,9 @@ export const PROJECTS: IProject[] = [
         sourceCode: 'https://github.com/decea1st/LLM-Based-Text-Editor',
         year: 2024,
         description: `
-      A web app for grammar correction powered by a large language model. Users submit text, review highlighted corrections as an inline diff, and refine the result, with a token-based economy and collaborative editing built on top. <br/><br/>
+      A web app for grammar correction powered by a large language model. Users submit text, review highlighted corrections as an inline diff, and refine the result, with a token-based economy and collaborative editing built on top.
 
-      Key Features:
+      <h4>Key Features</h4>
       <ul>
         <li>LLM grammar correction with Mistral, shown as an editable inline diff before accepting</li>
         <li>Three user tiers: free (short texts), paid (tokens, downloads, history, collaboration), and super users (moderation)</li>
@@ -261,7 +311,7 @@ export const PROJECTS: IProject[] = [
       </ul>
       `,
         role: `
-      Developer <br/>
+      <h3>Developer</h3>
       Built as a software engineering course project, later cleaned up and deployed. I built the Streamlit app with a custom bidirectional React component for the editable diff view, the PostgreSQL-backed account, token, and moderation systems, and the Mistral API integration.
       `,
         techStack: ['Python', 'Streamlit', 'React', 'PostgreSQL', 'Mistral'],
