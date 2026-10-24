@@ -40,7 +40,6 @@
 
     /* Lines and effects */
     --border: 0 0% 85%; /* Default border lines: light grey */
-    --ring: 356 78% 50%; /* Keyboard focus outline: same red as the main accent */
     --shade: 0 0% 60%; /* Tint for overlays and sunken boxes: soft grey */
     --vignette-opacity: 0.2; /* Darkening around the screen edges: 0 = none, 1 = strong */
     --icon-tile: 0 0% 100%; /* Square behind each tech-stack logo: white */
@@ -50,23 +49,6 @@
     --scanline-opacity: 0.3; /* Striped "hologram" effect on the active project's image: 0 = off, 1 = full */
     --carousel-image-fade: 0.15; /* How strongly screenshots fade into the card at the bottom: 0 = no fade, 1 = fully hidden */
     --carousel-image-fade-start: 0%; /* Where the fade begins: 0% = from the very top, 50% = only the bottom half */
-
-    /* Rarely used (UI library defaults) */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
-    --muted: 0 0% 92%;
-    --accent: 0 0% 92%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 8 82% 46%;
-    --destructive-foreground: 0 0% 98%;
-    --input: 0 0% 90%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
 }
 
 /* ── Theme: dark with purple accents (the original look) ── */
@@ -87,7 +69,6 @@
 
     /* Lines and effects */
     --border: 270 12% 24%; /* Default border lines: dark purple-grey */
-    --ring: 268 88% 70%; /* Keyboard focus outline: lavender purple */
     --shade: 0 0% 0%; /* Tint for overlays and sunken boxes: black */
     --vignette-opacity: 0.85; /* Darkening around the screen edges */
     --icon-tile: 220 13% 5%; /* Square behind each tech-stack logo: near-black */
@@ -97,16 +78,6 @@
     --scanline-opacity: 1; /* Striped "hologram" effect on the active project's image */
     --carousel-image-fade: 0.8; /* How strongly screenshots fade into the card at the bottom */
     --carousel-image-fade-start: 0%; /* Where the fade begins */
-
-    /* Rarely used (UI library defaults) */
-    --card: 220 10% 10%;
-    --card-foreground: 30 12% 90%;
-    --popover: 220 10% 10%;
-    --popover-foreground: 30 12% 90%;
-    --muted: 220 8% 14%;
-    --accent: 220 8% 17%;
-    --accent-foreground: 0 0% 98%;
-    --input: 220 8% 14%;
 }
 
 @layer base {

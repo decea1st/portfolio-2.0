@@ -162,7 +162,6 @@ export const PROJECTS: IProject[] = [
             'Reanimated',
         ],
         thumbnail: '/projects/thumbnail/clustr-app.png',
-        longThumbnail: '/projects/thumbnail/clustr-app.png',
         images: [
             '/projects/images/clustr-app-1.png',
             '/projects/images/clustr-app-2.png',
@@ -192,7 +191,6 @@ export const PROJECTS: IProject[] = [
       `,
         techStack: ['React', 'TypeScript', 'CSS', 'Cloudflare'],
         thumbnail: '/projects/thumbnail/clustr.png',
-        longThumbnail: '/projects/long/clustr.png',
         images: ['/projects/images/clustr-1.png'],
     },
     {
@@ -227,7 +225,6 @@ export const PROJECTS: IProject[] = [
             'scikit-learn',
         ],
         thumbnail: '/projects/thumbnail/outbreak-io.png',
-        longThumbnail: '/projects/long/outbreak-io.png',
         images: [
             '/projects/images/outbreak-io-1.png',
             '/projects/images/outbreak-io-2.png',
@@ -256,7 +253,6 @@ export const PROJECTS: IProject[] = [
       `,
         techStack: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL'],
         thumbnail: '/projects/thumbnail/campusvoice.png',
-        longThumbnail: '/projects/long/campusvoice.png',
         images: ['/projects/images/campusvoice-1.png'],
     },
     {
@@ -291,7 +287,6 @@ export const PROJECTS: IProject[] = [
             'Firestore',
         ],
         thumbnail: '/projects/thumbnail/tuneacademy.png',
-        longThumbnail: '/projects/long/tuneacademy.png',
         images: [
             '/projects/images/tuneacademy-1.png',
             '/projects/images/tuneacademy-2.png',
@@ -321,7 +316,6 @@ export const PROJECTS: IProject[] = [
       `,
         techStack: ['Python', 'Streamlit', 'React', 'PostgreSQL', 'Mistral'],
         thumbnail: '/projects/thumbnail/llm-text-editor.png',
-        longThumbnail: '/projects/long/llm-text-editor.png',
         images: ['/projects/images/llm-text-editor-1.png'],
     },
 ];
@@ -332,18 +326,18 @@ export const MY_EXPERIENCE = [
         company: 'Prenora Dynamics',
         duration: 'June 2026 - Current',
         bullets: [
-            "Building the core platform for Jamory, Prenora Dynamics' flagship product for making music more accessible and giving musicians greater financial independence, using Next.js, Node.js, PostgreSQL.",
-            'Designing the REST API layer, booking & payments flow to enable users to schedule appointments and process payments.',
+            "Building the core platform for Jamory, Prenora Dynamics' flagship marketplace connecting music students with tutors, using Next.js, Node.js, PostgreSQL.",
+            'Owning the REST API layer and end-to-end booking & payments flow, building 10 endpoints for scheduling and Stripe checkout, with PostgreSQL transactions and idempotency keys preventing double bookings.',
         ],
     },
     {
-        title: 'Full Stack Engineer',
+        title: 'Full Stack Engineer Intern',
         company: 'Clustr',
         duration: 'Aug 2025 - June 2026',
         bullets: [
-            'Engineered a 6-state collaborative activity pipeline in Firebase Cloud Functions using Firestore transactions, Pub/Sub, and task queues to automate invite resolution, timed activity start/end transitions, and milestone progression.',
-            'Built a semantic intro-matching pipeline, achieving 95%+ match reliability across 500+ test cases, by using 766-D Vertex AI embeddings, Firestore vector search, and a 15-candidate tag-overlap fallback.',
-            'Automated a 6-stage activity lifecycle with Firebase Cloud Functions, reducing latency by ~37% and cutting redundant Firestore operations by ~45% via transactional state management, Pub/Sub, and task queues.',
+            'Developed and launched Clustr, a social-productivity app, on the Google Play Store with React Native, TypeScript, and Firebase, and built its React homepage.',
+            'Automated group activities from invite to completion with Firebase Cloud Functions, Pub/Sub, and task queues, cutting latency by ~37% and redundant database operations by ~45%.',
+            'Implemented an AI matching feature that pairs users for introductions using Vertex AI embeddings and Firestore vector search, achieving 95%+ match reliability across 500+ test cases.',
         ],
     },
     {

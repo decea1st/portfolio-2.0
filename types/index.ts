@@ -1,19 +1,4 @@
-export type Next_Page_Url = string;
-// UrlObject;
-// | __next_route_internal_types__.StaticRoutes
-// | __next_route_internal_types__.DynamicRoutes;
-
-export type Variant =
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'warning'
-    | 'danger'
-    | 'info'
-    | 'light'
-    | 'dark'
-    | 'link'
-    | 'no-color';
+export type Variant = 'primary' | 'secondary';
 
 export interface IProject {
     title: string;
@@ -22,7 +7,6 @@ export interface IProject {
     role: string;
     techStack: string[];
     thumbnail: string;
-    longThumbnail: string;
     images: string[];
     // Tall phone captures: shown side by side instead of full width
     mobileScreenshots?: boolean;

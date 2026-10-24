@@ -49,7 +49,7 @@ const Preloader = () => {
                     Welcome to
                 </p>
                 <h2 className="boot-copy mt-4 font-anton text-5xl leading-none text-primary opacity-0 text-glow sm:text-7xl">
-                    FARDIN'S PORTFOLIO
+                    FARDIN&apos;S PORTFOLIO
                 </h2>
                 <div className="mt-6 space-y-3">
                     {[86, 64, 92, 51].map((width, index) => (

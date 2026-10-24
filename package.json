@@ -6,13 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "svgr:icons": "svgr --title-prop --no-dimensions --typescript -d components/icons -- components/icons/svgs"
+    "lint": "next lint"
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
-    "@next/third-parties": "^15.2.0",
-    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "gsap": "^3.12.5",
     "html-react-parser": "^5.2.3",
@@ -20,11 +17,9 @@
     "next": "16.1.6",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
-    "@svgr/cli": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

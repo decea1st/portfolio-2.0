@@ -68,11 +68,10 @@ const Banner = () => {
                     </p>
 
                     <div className="hero-reveal mt-9 flex flex-wrap gap-4">
-                        <Button as="link" href="#selected-projects">
+                        <Button href="#selected-projects">
                             View Projects
                         </Button>
                         <Button
-                            as="link"
                             href={CONTACT_MAILTO}
                             variant="secondary"
                             onClick={handleContactClick}
